@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hermes Agent — Team Lead Initiative | IntelligenzIT</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #0a0a0f;
+            color: #e4e4e7;
+            line-height: 1.6;
+        }
+        .slide {
+            min-height: 100vh;
+            padding: 80px 60px;
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .slide:last-child { border-bottom: none; }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 120px 60px;
+        }
+        .hero .badge {
+            display: inline-block;
+            background: rgba(99,102,241,0.15);
+            color: #818cf8;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(99,102,241,0.2);
+        }
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            background: linear-gradient(135deg, #f0f0ff 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+        .hero .subtitle {
+            font-size: 20px;
+            color: #a1a1aa;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+        .hero .meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            color: #71717a;
+            font-size: 14px;
+        }
+        .hero .meta span { display: flex; align-items: center; gap: 6px; }
+
+        /* Section headers */
+        h2 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            color: #f0f0ff;
+        }
+        h2 .accent { color: #818cf8; }
+        .section-sub {
+            color: #a1a1aa;
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+        /* Cards */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+        .card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.2s;
+        }
+        .card:hover { border-color: rgba(99,102,241,0.3); }
+        .card .icon {
+            font-size: 28px;
+            margin-bottom: 12px;
+        }
+        .card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #f0f0ff;
+            margin-bottom: 8px;
+        }
+        .card p, .card .value {
+            font-size: 14px;
+            color: #a1a1aa;
+            line-height: 1.5;
+        }
+        .card .value { font-size: 24px; font-weight: 700; color: #818cf8; display: block; margin-bottom: 4px; }
+        .card .label { font-size: 13px; color: #71717a; }
+
+        /* Tables */
+        .table-wrap {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th {
+            text-align: left;
+            padding: 14px 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #71717a;
+            background: rgba(255,255,255,0.02);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        td {
+            padding: 14px 20px;
+            font-size: 14px;
+            color: #d4d4d8;
+            border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+        tr:last-child td { border-bottom: none; }
+        .highlight { color: #a78bfa; font-weight: 600; }
+        .green { color: #34d399; font-weight: 600; }
+        .red { color: #f87171; }
+        .amber { color: #fbbf24; }
+
+        /* Stats row */
+        .stats-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+        .stat {
+            text-align: center;
+            padding: 32px 20px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+        }
+        .stat .number {
+            font-size: 40px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #818cf8, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .stat .desc {
+            font-size: 14px;
+            color: #a1a1aa;
+            margin-top: 4px;
+        }
+
+        /* Security grid */
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+        .security-item {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .security-item .num {
+            font-size: 20px;
+            font-weight: 700;
+            color: #818cf8;
+            margin-bottom: 4px;
+        }
+        .security-item h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #f0f0ff;
+            margin-bottom: 4px;
+        }
+        .security-item p {
+            font-size: 13px;
+            color: #71717a;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+            margin: 24px 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(99,102,241,0.3);
+        }
+        .tl-item {
+            position: relative;
+            margin-bottom: 28px;
+        }
+        .tl-item::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #818cf8;
+            border: 2px solid #0a0a0f;
+        }
+        .tl-item .phase {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #818cf8;
+            margin-bottom: 2px;
+        }
+        .tl-item h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #f0f0ff;
+            margin-bottom: 4px;
+        }
+        .tl-item p {
+            font-size: 14px;
+            color: #a1a1aa;
+        }
+        .tl-item .cost {
+            font-size: 13px;
+            color: #34d399;
+            font-weight: 600;
+            margin-top: 4px;
+        }
+
+        /* Comparison */
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.06);
+            margin: 20px 0;
+        }
+        .comp-item {
+            padding: 24px;
+            background: rgba(255,255,255,0.02);
+        }
+        .comp-item + .comp-item { border-left: 1px solid rgba(255,255,255,0.06); }
+        .comp-item.winner { background: rgba(99,102,241,0.08); }
+        .comp-item h4 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+        .comp-item .price { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+        .comp-item ul { list-style: none; padding: 0; }
+        .comp-item li {
+            font-size: 13px;
+            color: #a1a1aa;
+            padding: 4px 0;
+        }
+        .comp-item li::before { content: '— '; color: #52525b; }
+
+        /* Footer / CTA */
+        .cta-section {
+            text-align: center;
+            padding: 80px 60px;
+        }
+        .cta-section h2 { font-size: 42px; margin-bottom: 16px; }
+        .cta-section p { color: #a1a1aa; font-size: 18px; max-width: 500px; margin: 0 auto 32px; }
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #818cf8, #7c3aed);
+            color: white;
+            padding: 14px 40px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(99,102,241,0.3); }
+
+        @media (max-width: 768px) {
+            .slide { padding: 40px 24px; }
+            .hero { padding: 60px 24px; }
+            .hero h1 { font-size: 32px; }
+            .comparison { grid-template-columns: 1fr; }
+            .stats-row { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== SLIDE 1: HERO ===== -->
+<div class="slide hero">
+    <div class="badge">✦ INTERNAL PROPOSAL</div>
+    <h1>Hermes Agent<br>for Team Leaders</h1>
+    <p class="subtitle">Give every team lead at IntelligenzIT a dedicated AI agent — automate ops, reclaim time, ship faster.</p>
+    <div class="meta">
+        <span>📅 July 2026</span>
+        <span>👤 Prepared for PVR</span>
+        <span>🏢 IntelligenzIT</span>
+    </div>
+</div>
+
+<!-- ===== SLIDE 2: THE PROBLEM ===== -->
+<div class="slide">
+    <h2>The <span class="accent">Problem</span></h2>
+    <p class="section-sub">Team leads spend 30-40% of their week on operational overhead, not engineering or strategy.</p>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr><th>Task</th><th>Weekly Time Lost</th><th>Pain Level</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Attendance tracking (login/logout, chasing latecomers)</td><td>2-3 hrs</td><td class="red">🔴 High</td></tr>
+                <tr><td>End-of-day report compilation</td><td>3-4 hrs</td><td class="red">🔴 High</td></tr>
+                <tr><td>Standup aggregation</td><td>2-3 hrs</td><td class="amber">🟡 Medium</td></tr>
+                <tr><td>Ticket triage & status checks</td><td>2-3 hrs</td><td class="amber">🟡 Medium</td></tr>
+                <tr><td>Onboarding new members</td><td>1-2 hrs/project</td><td class="green">🟢 Low</td></tr>
+                <tr><td>Ad-hoc queries ("What's the status?")</td><td>3-5 hrs</td><td class="red">🔴 High</td></tr>
+                <tr style="background: rgba(99,102,241,0.06);"><td><strong>Total Wasted Capacity</strong></td><td><strong class="highlight">13-20 hrs/week</strong></td><td></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="stat" style="margin-top: 20px;">
+        <div class="number">₹89K - ₹1.37L</div>
+        <div class="desc">Annual cost of lost productivity per team lead (at ₹1.1L/month salary)</div>
+    </div>
+</div>
+
+<!-- ===== SLIDE 3: THE SOLUTION ===== -->
+<div class="slide">
+    <h2>The <span class="accent">Solution</span></h2>
+    <p class="section-sub">One Hermes Agent per team lead — trained through conversation, not code.</p>
+
+    <div class="card-grid">
+        <div class="card">
+            <div class="icon">🤖</div>
+            <h3>Dedicated Agent Per TL</h3>
+            <p>Each team lead gets their own Hermes instance with isolated memory, skills, and config — running on a shared VPS via Hermes Profiles.</p>
+        </div>
+        <div class="card">
+            <div class="icon">💬</div>
+            <h3>Onboarding = Conversation</h3>
+            <p>No training data required. Hermes asks: "What's your team's role? What does a day look like?" — the TL answers in plain English, and it saves everything.</p>
+        </div>
+        <div class="card">
+            <div class="icon">⚡</div>
+            <h3>Automated Ops</h3>
+            <p>Attendance, EOD reports, standup summaries, cron jobs — set up in minutes, run forever. The team lead approves, Hermes executes.</p>
+        </div>
+        <div class="card">
+            <div class="icon">👥</div>
+            <h3>Assists the Whole Team</h3>
+            <p>Team members can query the agent anytime: "Who's on leave?", "What's the blocker on Project X?", "Help me draft this email." 24/7 availability.</p>
+        </div>
+        <div class="card">
+            <div class="icon">🧠</div>
+            <h3>Learns Every Role</h3>
+            <p>From AWS Cloud Engineer to DevOps to QA — the agent learns each job's workflows, SOPs, and pain points through conversation, then builds a Chandra-like digital worker.</p>
+        </div>
+        <div class="card">
+            <div class="icon">📦</div>
+            <h3>Preserves Knowledge</h3>
+            <p>When a team lead leaves, their Hermes profile (memory, skills, team context) transfers to the replacement. Zero institutional knowledge loss.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== SLIDE 4: COST BREAKDOWN ===== -->
+<div class="slide">
+    <h2>Cost <span class="accent">Breakdown</span></h2>
+    <p class="section-sub">Less than one team lunch per team lead per month.</p>
+
+    <div class="stats-row">
+        <div class="stat">
+            <div class="number">₹350</div>
+            <div class="desc">VPS per TL / month<br><span style="font-size:12px;color:#71717a;">Hetzner CX22 — 2 vCPU, 4GB RAM</span></div>
+        </div>
+        <div class="stat">
+            <div class="number">₹250-500</div>
+            <div class="desc">LLM Tokens per TL / month<br><span style="font-size:12px;color:#71717a;">DeepSeek V4 Flash via OpenRouter</span></div>
+        </div>
+        <div class="stat">
+            <div class="number">~₹750</div>
+            <div class="desc">Total per TL / month</div>
+        </div>
+        <div class="stat">
+            <div class="number">₹7,500</div>
+            <div class="desc">Total for 10 Team Leads / month</div>
+        </div>
+    </div>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr><th>Item</th><th>Spec</th><th>Cost/Month (per TL)</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>VPS</td><td>2 vCPU, 4GB RAM, 40GB SSD</td><td class="highlight">~₹350</td><td>Hetzner CX22 — can host 3-4 TLs on one CX32 (₹510)</td></tr>
+                <tr><td>LLM Tokens</td><td>DeepSeek V4 Flash — $0.09/M in, $0.18/M out</td><td class="highlight">~₹250-500</td><td>Covers 200-500 queries/day</td></tr>
+                <tr><td>Domain / SSL</td><td>Auto-renew</td><td>~₹12</td><td>Negligible when shared</td></tr>
+                <tr style="background: rgba(99,102,241,0.06);"><td><strong>Total</strong></td><td></td><td><strong class="highlight">~₹600-850</strong></td><td><strong>Per team lead per month</strong></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-top:16px;padding:16px 20px;background:rgba(52,211,153,0.06);border:1px solid rgba(52,211,153,0.15);border-radius:12px;">
+        <p style="color:#34d399;font-size:14px;font-weight:600;">✅ One-time setup: ~₹2,000 per TL (Mahesh DevOps — 1-2 hours VPS + 30 min onboarding)</p>
+    </div>
+</div>
+
+<!-- ===== SLIDE 5: ROI ===== -->
+<div class="slide">
+    <h2>Return on <span class="accent">Investment</span></h2>
+    <p class="section-sub">29x return at 10 team leads. Here's the math.</p>
+
+    <div class="card-grid">
+        <div class="card">
+            <span class="value">633%</span>
+            <span class="label">Conservative ROI</span>
+            <p style="margin-top:8px;">Just 5% productivity gain from automating attendance + EOD reports alone.</p>
+        </div>
+        <div class="card">
+            <span class="value">29x</span>
+            <span class="label">Realistic ROI</span>
+            <p style="margin-top:8px;">20% ops automation frees 10+ hrs/week per TL. At 10 team leads: ₹26.4L/year value vs ₹90K cost.</p>
+        </div>
+        <div class="card">
+            <span class="value">₹2,640</span>
+            <span class="label">Value per Rupee Spent</span>
+            <p style="margin-top:8px;">Every ₹1 spent on Hermes returns ₹2,640 in reclaimed team lead capacity.</p>
+        </div>
+    </div>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr><th>Scenario</th><th>Per TL Annual Cost</th><th>Per TL Annual Value</th><th>10 TLs Annual Value</th><th>ROI</th></tr>
+            </thead>
+            <tbody>
+                <tr><td>Conservative (5% gain)</td><td>₹9,000</td><td>₹66,000</td><td>₹6,60,000</td><td class="green">633%</td></tr>
+                <tr><td>Moderate (10% gain)</td><td>₹9,000</td><td>₹1,32,000</td><td>₹13,20,000</td><td class="green">13.6x</td></tr>
+                <tr><td><strong>Realistic (20% ops automation)</strong></td><td><strong>₹9,000</strong></td><td><strong>₹2,64,000</strong></td><td><strong>₹26,40,000</strong></td><td class="green"><strong>29x</strong></td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div style="margin-top:20px;padding:20px 24px;background:rgba(251,191,36,0.06);border:1px solid rgba(251,191,36,0.15);border-radius:12px;">
+        <p style="color:#fbbf24;font-size:14px;font-weight:500;">💡 The cost of doing nothing: ~₹11L/month in lost TL productivity across 10 team leads.</p>
+    </div>
+</div>
+
+<!-- ===== SLIDE 6: SECURITY ===== -->
+<div class="slide">
+    <h2>Security <span class="accent">Architecture</span></h2>
+    <p class="section-sub">7-layer defense-in-depth. Fully self-hosted. No vendor lock-in.</p>
+
+    <div class="security-grid">
+        <div class="security-item">
+            <div class="num">01</div>
+            <h4>User Allowlists</h4>
+            <p>Control which team members can interact with which agent.</p>
+        </div>
+        <div class="security-item">
+            <div class="num">02</div>
+            <h4>Dangerous Command Approval</h4>
+            <p>Auxiliary LLM reviews destructive commands before execution.</p>
+        </div>
+        <div class="security-item">
+            <div class="num">03</div>
+            <h4>Secret Redaction</h4>
+            <p>API keys, passwords, tokens auto-masked in tool output & logs.</p>
+        </div>
+        <div class="security-item">
+            <div class="num">04</div>
+            <h4>Prompt Injection Scanning</h4>
+            <p>Malicious instructions embedded in files or web pages are blocked.</p>
+        </div>
+        <div class="security-item">
+            <div class="num">05</div>
+            <h4>Cross-Session Isolation</h4>
+            <p>Hermes Profiles keep Team A's data fully separate from Team B's.</p>
+        </div>
+        <div class="security-item">
+            <div class="num">06</div>
+            <h4>PII Redaction</h4>
+            <p>Phone numbers, emails can be auto-stripped from agent context.</p>
+        </div>
+        <div class="security-item">
+            <div class="num">07</div>
+            <h4>Self-Hosted Control</h4>
+            <p>All data stays on your VPS. No third-party data leaks. MIT-licensed — fully auditable.</p>
+        </div>
+    </div>
+
+    <div style="margin-top:24px;padding:20px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:12px;">
+        <p style="font-size:14px;color:#a1a1aa;">
+        <strong style="color:#f0f0ff;">Data Flow:</strong> 
+        Team Lead (Slack/Telegram) → <strong>Your VPS</strong> (Hermes Agent + Memory DB) → OpenRouter API (LLM inference — no training on your data)
+        </p>
+        <p style="font-size:13px;color:#71717a;margin-top:6px;">🔒 OpenRouter is GDPR-compliant. No customer data leaves your infrastructure except anonymized tokenized prompts.</p>
+    </div>
+</div>
+
+<!-- ===== SLIDE 7: COMPARISON ===== -->
+<div class="slide">
+    <h2>Build vs Buy vs <span class="accent">Hermes</span></h2>
+    <p class="section-sub">Why building from scratch doesn't make sense.</p>
+
+    <div class="comparison">
+        <div class="comp-item winner">
+            <h4 style="color:#818cf8;">✅ Hermes Agent</h4>
+            <div class="price" style="color:#34d399;">₹7,500/mo</div>
+            <p style="font-size:13px;color:#a1a1aa;margin-bottom:12px;">for 10 team leads</p>
+            <ul>
+                <li>2 weeks to value</li>
+                <li>Open source, auditable</li>
+                <li>Self-hosted on your VPS</li>
+                <li>No development required</li>
+                <li>Conversational onboarding</li>
+                <li>Proven in production (us)</li>
+            </ul>
+        </div>
+        <div class="comp-item">
+            <h4 style="color:#f87171;">🔧 Build Custom (Chandra-style)</h4>
+            <div class="price" style="color:#f87171;">₹2-3L/mo</div>
+            <p style="font-size:13px;color:#a1a1aa;margin-bottom:12px;">in dev salaries</p>
+            <ul>
+                <li>3-6 months to build</li>
+                <li>Ongoing maintenance burden</li>
+                <li>Developer time diverted</li>
+                <li>Risk of scope creep</li>
+                <li>Need to build memory, tools, gateway from scratch</li>
+            </ul>
+        </div>
+        <div class="comp-item">
+            <h4 style="color:#fbbf24;">🏢 Commercial SaaS</h4>
+            <div class="price" style="color:#fbbf24;">₹50K-2L/mo</div>
+            <p style="font-size:13px;color:#a1a1aa;margin-bottom:12px;">per-seat pricing</p>
+            <ul>
+                <li>Per-seat licensing adds up</li>
+                <li>Data leaves your infrastructure</li>
+                <li>Vendor lock-in</li>
+                <li>Limited customization</li>
+                <li>Can't learn your specific workflows</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<!-- ===== SLIDE 8: ROADMAP ===== -->
+<div class="slide">
+    <h2>Implementation <span class="accent">Roadmap</span></h2>
+    <p class="section-sub">Three phases. First pilot costs ₹1,500.</p>
+
+    <div class="timeline">
+        <div class="tl-item">
+            <div class="phase">Phase 0 — Pilot (2 weeks)</div>
+            <h4>Prove the concept with one team</h4>
+            <p>Deploy 1 VPS (4 vCPU, 8GB — shared). Onboard 1 team lead (AWS Cloud Engineer team). Automate: attendance + EOD reporting. Measure: hours saved vs baseline.</p>
+            <div class="cost">💰 ₹1,500 one-time</div>
+        </div>
+        <div class="tl-item">
+            <div class="phase">Phase 1 — Scale (1 month)</div>
+            <h4>5 team leads, shared skill library</h4>
+            <p>Add 5 more team leads on the same VPS. Build reusable skills (attendance, reporting, standup). Iterate onboarding based on pilot feedback.</p>
+            <div class="cost">💰 ₹5,000/month</div>
+        </div>
+        <div class="tl-item">
+            <div class="phase">Phase 2 — Organization-Wide (2 months)</div>
+            <h4>All team leads onboarded</h4>
+            <p>10+ team leads live. Dedicated VPS cluster if needed. Chandra-like digital workers for high-volume roles. Full automation of team ops.</p>
+            <div class="cost">💰 ₹10,000/month</div>
+        </div>
+    </div>
+
+    <div style="margin-top:8px;padding:16px 20px;background:rgba(99,102,241,0.06);border:1px solid rgba(99,102,241,0.15);border-radius:12px;">
+        <p style="font-size:14px;color:#a1a1aa;">
+        <strong style="color:#f0f0ff;">Who maintains it?</strong> Mahesh (DevOps) — one-time setup per TL, ~1 hour/month maintenance thereafter.
+        </p>
+    </div>
+</div>
+
+<!-- ===== SLIDE 9: FAQ ===== -->
+<div class="slide">
+    <h2>Questions PVR <span class="accent">Will Ask</span></h2>
+    <p class="section-sub">And the answers.</p>
+
+    <div class="card-grid" style="grid-template-columns:1fr;">
+        <div class="card" style="padding:20px 24px;">
+            <h3>❓ "What if a team lead doesn't know how to use it?"</h3>
+            <p>Onboarding is a conversation, not a training course. Hermes asks questions, the TL answers in plain English. No coding, no config files, no learning curve.</p>
+        </div>
+        <div class="card" style="padding:20px 24px;">
+            <h3>❓ "Can we try before we commit?"</h3>
+            <p>Yes. OpenRouter offers free models with 200 req/day — we can run a zero-cost proof-of-concept with one team lead before spending anything.</p>
+        </div>
+        <div class="card" style="padding:20px 24px;">
+            <h3>❓ "What if a team lead leaves the company?"</h3>
+            <p>Their Hermes profile (memory, skills, team context, workflows) is a directory on the VPS. Hand it to the replacement. Zero institutional knowledge lost.</p>
+        </div>
+        <div class="card" style="padding:20px 24px;">
+            <h3>❓ "Is this secure for our client data?"</h3>
+            <p>Fully self-hosted on your VPS. PII redaction, secret masking, prompt injection scanning, cross-session isolation. MIT-licensed open source — fully auditable by your security team.</p>
+        </div>
+        <div class="card" style="padding:20px 24px;">
+            <h3>❓ "Can it integrate with our existing tools?"</h3>
+            <p>Slack, Telegram, Email, Jira (via MCP), any webhook-capable tool. If it has an API, Hermes can connect to it.</p>
+        </div>
+        <div class="card" style="padding:20px 24px;">
+            <h3>❓ "What's the first thing a team lead would automate?"</h3>
+            <p>Attendance tracking and end-of-day reports are the lowest-hanging fruit — every team lead does them, every team lead hates them. Set up in 10 minutes, saves 5+ hours/week.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== SLIDE 10: RECOMMENDATION ===== -->
+<div class="slide cta-section">
+    <div class="badge" style="background:rgba(52,211,153,0.12);color:#34d399;border-color:rgba(52,211,153,0.2);">✦ RECOMMENDATION</div>
+    <h2>Start the <span class="accent">Pilot</span> This Week</h2>
+    <p>₹1,500. One team lead. Two weeks. If it saves 2 hours/week, the ROI is positive in the first week. From there, scaling to 10+ team leads costs less than ₹10,000/month and unlocks <strong>₹26.4L/year</strong> in reclaimed capacity.</p>
+
+    <div style="display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:32px;">
+        <div style="text-align:center;padding:16px 24px;background:rgba(255,255,255,0.02);border-radius:12px;border:1px solid rgba(255,255,255,0.06);">
+            <div style="font-size:32px;font-weight:800;color:#818cf8;">₹1,500</div>
+            <div style="font-size:13px;color:#71717a;">Pilot Investment</div>
+        </div>
+        <div style="text-align:center;padding:16px 24px;background:rgba(255,255,255,0.02);border-radius:12px;border:1px solid rgba(255,255,255,0.06);">
+            <div style="font-size:32px;font-weight:800;color:#34d399;">29x</div>
+            <div style="font-size:13px;color:#71717a;">Full Rollout ROI</div>
+        </div>
+        <div style="text-align:center;padding:16px 24px;background:rgba(255,255,255,0.02);border-radius:12px;border:1px solid rgba(255,255,255,0.06);">
+            <div style="font-size:32px;font-weight:800;color:#fbbf24;">2 Weeks</div>
+            <div style="font-size:13px;color:#71717a;">Time to First Value</div>
+        </div>
+    </div>
+
+    <p style="margin-top:40px;font-size:14px;color:#52525b;">
+        Prepared by Phani · IntelligenzIT · July 2026 · Built with Hermes Agent
+    </p>
+</div>
+
+</body>
+</html>

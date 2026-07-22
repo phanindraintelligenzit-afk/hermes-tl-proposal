@@ -4,255 +4,433 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hermes for Team Leads — IntelligenzIT</title>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', -apple-system, sans-serif;
-            background: #fafaf9;
-            color: #1c1917;
+            background: #0a0a0f;
+            color: #e4e4e7;
+            line-height: 1.6;
         }
-
-        .wrap {
-            max-width: 680px;
+        .slide {
+            min-height: 100vh;
+            padding: 80px 60px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 80px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
+        .slide:last-child { border-bottom: none; }
 
-        /* ===== HEADER ===== */
-        .header {
-            margin-bottom: 80px;
-        }
-        .header .tag {
-            font-size: 12px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #a8a29e;
-            margin-bottom: 20px;
-        }
-        .header h1 {
-            font-family: 'Instrument Serif', serif;
-            font-size: 56px;
-            font-weight: 400;
-            line-height: 1.1;
-            letter-spacing: -1px;
-            color: #1c1917;
-            margin-bottom: 20px;
-        }
-        .header h1 em {
-            font-style: italic;
-            color: #6366f1;
-        }
-        .header p {
-            font-size: 18px;
-            color: #78716c;
-            line-height: 1.7;
-            max-width: 520px;
-        }
-
-        /* ===== BODY TEXT ===== */
-        .body-text {
-            font-size: 16px;
-            color: #44403c;
-            line-height: 1.8;
-        }
-        .body-text p {
-            margin-bottom: 24px;
-        }
-        .body-text p.lede {
-            font-size: 19px;
-            color: #292524;
-            line-height: 1.7;
-        }
-
-        /* ===== PULL QUOTE ===== */
-        .pull {
-            font-family: 'Instrument Serif', serif;
-            font-size: 28px;
-            line-height: 1.3;
-            color: #1c1917;
-            padding: 40px 0;
-            margin: 40px 0;
-            border-top: 1px solid #e7e5e4;
-            border-bottom: 1px solid #e7e5e4;
-        }
-        .pull em {
-            color: #6366f1;
-            font-style: italic;
-        }
-
-        /* ===== SECTION ===== */
-        .section-title {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #a8a29e;
-            margin-bottom: 16px;
-            padding-top: 48px;
-        }
-
-        /* ===== MOMENT ===== */
-        .moment {
-            margin: 48px 0;
-            padding: 32px;
-            background: #f5f5f4;
-            border-radius: 16px;
-        }
-        .moment .label {
-            font-size: 11px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #a8a29e;
-            margin-bottom: 8px;
-        }
-        .moment h3 {
-            font-family: 'Instrument Serif', serif;
-            font-size: 22px;
-            font-weight: 400;
-            color: #1c1917;
-            margin-bottom: 10px;
-        }
-        .moment p {
-            font-size: 15px;
-            color: #57534e;
-            line-height: 1.7;
-        }
-
-        /* ===== SEPARATOR ===== */
-        .sep {
+        .hero {
             text-align: center;
-            color: #d6d3d1;
-            font-size: 20px;
-            margin: 56px 0;
-            letter-spacing: 8px;
+            padding: 120px 60px;
         }
-
-        /* ===== CLOSING ===== */
-        .closing {
-            margin-top: 80px;
-            padding-top: 40px;
-            border-top: 1px solid #e7e5e4;
-        }
-        .closing p {
-            font-size: 14px;
-            color: #a8a29e;
-            line-height: 1.7;
-        }
-        .closing .name {
-            font-size: 15px;
+        .hero .badge {
+            display: inline-block;
+            background: rgba(99,102,241,0.15);
+            color: #818cf8;
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 13px;
             font-weight: 600;
-            color: #1c1917;
-            margin-top: 24px;
+            letter-spacing: 0.5px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(99,102,241,0.2);
+        }
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+            background: linear-gradient(135deg, #f0f0ff 0%, #818cf8 50%, #c084fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+        .hero .subtitle {
+            font-size: 20px;
+            color: #a1a1aa;
+            font-weight: 300;
+            max-width: 600px;
+            margin: 0 auto 32px;
+        }
+        .hero .meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            color: #71717a;
+            font-size: 14px;
         }
 
-        @media (max-width: 600px) {
-            .wrap { padding: 48px 24px; }
-            .header h1 { font-size: 38px; }
-            .pull { font-size: 22px; }
-            .moment { padding: 24px; }
+        h2 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+            color: #f0f0ff;
+        }
+        h2 .accent { color: #818cf8; }
+        .section-sub {
+            color: #a1a1aa;
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 24px 0;
+        }
+        .card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.2s;
+        }
+        .card:hover { border-color: rgba(99,102,241,0.3); }
+        .card .icon { font-size: 28px; margin-bottom: 12px; }
+        .card h3 { font-size: 16px; font-weight: 600; color: #f0f0ff; margin-bottom: 8px; }
+        .card p { font-size: 14px; color: #a1a1aa; line-height: 1.5; }
+
+        .moment-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.06);
+            margin: 20px 0;
+        }
+        .moment-item {
+            padding: 36px 28px;
+            background: rgba(255,255,255,0.02);
+        }
+        .moment-item + .moment-item { border-left: 1px solid rgba(255,255,255,0.06); }
+        .moment-item .step { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #818cf8; margin-bottom: 8px; }
+        .moment-item h4 { font-size: 17px; font-weight: 600; color: #f0f0ff; margin-bottom: 10px; font-style: italic; }
+        .moment-item p { font-size: 14px; color: #a1a1aa; line-height: 1.6; }
+
+        .timeline {
+            position: relative;
+            padding-left: 32px;
+            margin: 24px 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: rgba(99,102,241,0.3);
+        }
+        .tl-item { position: relative; margin-bottom: 28px; }
+        .tl-item::before {
+            content: '';
+            position: absolute;
+            left: -28px;
+            top: 6px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #818cf8;
+            border: 2px solid #0a0a0f;
+        }
+        .tl-item .phase { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #818cf8; margin-bottom: 2px; }
+        .tl-item h4 { font-size: 16px; font-weight: 600; color: #f0f0ff; margin-bottom: 4px; }
+        .tl-item p { font-size: 14px; color: #a1a1aa; }
+
+        .security-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+        .security-item {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 20px;
+        }
+        .security-item h4 { font-size: 14px; font-weight: 600; color: #f0f0ff; margin-bottom: 4px; }
+        .security-item p { font-size: 13px; color: #71717a; }
+
+        .pull {
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 1.4;
+            color: #d4d4d8;
+            padding: 32px 0;
+            margin: 32px 0;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+        }
+        .pull em { color: #818cf8; font-style: normal; font-weight: 600; }
+
+        .cta-section { text-align: center; padding: 80px 60px; }
+        .cta-section h2 { font-size: 42px; margin-bottom: 16px; }
+        .cta-section p { color: #a1a1aa; font-size: 18px; max-width: 600px; margin: 0 auto 32px; }
+        .cta-section .small { font-size: 14px; color: #52525b; margin-top: 40px; }
+
+        .steps {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+        .step-box {
+            padding: 24px;
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+        }
+        .step-box .num { font-size: 12px; font-weight: 600; color: #52525b; margin-bottom: 4px; }
+        .step-box h4 { font-size: 15px; font-weight: 600; color: #f0f0ff; margin-bottom: 6px; }
+        .step-box p { font-size: 13px; color: #a1a1aa; }
+
+        @media (max-width: 768px) {
+            .slide { padding: 40px 24px; }
+            .hero { padding: 60px 24px; }
+            .hero h1 { font-size: 32px; }
+            .moment-grid { grid-template-columns: 1fr; }
+            .moment-item + .moment-item { border-left: none; border-top: 1px solid rgba(255,255,255,0.06); }
+            .steps { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="wrap">
 
-        <div class="header">
-            <div class="tag">A proposal for PVR</div>
-            <h1>Give every team lead <em>an assistant</em> that actually knows them.</h1>
-            <p>Not a chat bot. Not a spreadsheet. An agent that listens, learns, and takes care of the things that shouldn't need a team lead's attention.</p>
+<!-- ===== SLIDE 1: HERO ===== -->
+<div class="slide hero">
+    <div class="badge">✦ A PROPOSAL FOR PVR</div>
+    <h1>Hermes for<br>Every Team Lead</h1>
+    <p class="subtitle">Give each team lead at IntelligenzIT an assistant that actually knows their team — and takes care of the things that shouldn't need their attention.</p>
+    <div class="meta">
+        <span>📅 July 2026</span>
+        <span>✍️ Phani → PVR</span>
+        <span>🏢 IntelligenzIT</span>
+    </div>
+</div>
+
+<!-- ===== SLIDE 2: THE PROBLEM ===== -->
+<div class="slide">
+    <h2>The <span class="accent">Problem</span></h2>
+    <p class="section-sub">Our team leads are the people we trust the most. They're also the ones with the least uninterrupted time.</p>
+
+    <div class="card-grid">
+        <div class="card">
+            <div class="icon">📋</div>
+            <h3>Attendance tracking</h3>
+            <p>Every morning: who's in, who's late, who's on leave. Every evening: who logged what. Someone has to do it. That someone is the team lead.</p>
         </div>
-
-        <div class="body-text">
-            <p class="lede">Every team lead we have is someone who earned their way up because they're good at their craft. They know the architecture. They know the client. They know their team.</p>
-
-            <p>But most of their day isn't spent on any of that. It's spent on <strong>chasing attendance, compiling reports, summarizing standups, answering the same status questions over and over.</strong></p>
-
-            <p>Not because they want to. Because someone has to do it. And that someone is them.</p>
+        <div class="card">
+            <div class="icon">📝</div>
+            <h3>End-of-day reports</h3>
+            <p>Each team member writes an update. The TL compiles, formats, and forwards it upward. Hours of copy-paste work every week.</p>
         </div>
-
-        <div class="pull">
-            What if the team lead could focus on the work that actually needs them — and everything else just <em>happened?</em>
+        <div class="card">
+            <div class="icon">🗣️</div>
+            <h3>Standup aggregation</h3>
+            <p>Reading updates from everyone, summarizing for management, chasing missing entries. Necessary. Repetitive. Time-consuming.</p>
         </div>
-
-        <div class="body-text">
-            <p>That's what this is about. Not a tool they have to learn. <strong>An agent that learns them.</strong></p>
+        <div class="card">
+            <div class="icon">🔍</div>
+            <h3>Ad-hoc queries</h3>
+            <p>"What's the status on X?" "Who's working on Y?" "Is the blocker resolved?" — constant context-switching that breaks deep work.</p>
         </div>
+    </div>
 
-        <!-- ===== HOW IT WORKS ===== -->
-        <div class="section-title">How it works</div>
+    <div class="pull">
+        None of these require a team lead's expertise. But they take up nearly half the week.
+    </div>
+</div>
 
-        <div class="body-text">
-            <p>When a new team lead gets Hermes, it doesn't come with a manual. It comes with a conversation.</p>
+<!-- ===== SLIDE 3: THE VISION ===== -->
+<div class="slide">
+    <h2>The <span class="accent">Vision</span></h2>
+    <p class="section-sub">Not a tool they have to learn. An agent that learns them.</p>
 
-            <p>It asks: <em>"What does your team do? Who's on it? What does a typical day look like? What tasks do you find yourself repeating every week?"</em></p>
-
-            <p>The team lead answers. That's it. The agent remembers everything and starts looking for ways to help.</p>
+    <div class="card-grid">
+        <div class="card">
+            <div class="icon">💬</div>
+            <h3>Onboarding is a conversation</h3>
+            <p>Hermes asks: "What does your team do? Who are the members? What does a typical day look like?" The team lead answers in plain English. That's it. No training data, no config, no coding.</p>
         </div>
+        <div class="card">
+            <div class="icon">🧠</div>
+            <h3>It remembers everything</h3>
+            <p>Every name, role, workflow, SOP, and decision — saved permanently. It builds skills from experience and gets better over time. When a team lead leaves, their Hermes profile transfers to the next person. Nothing is lost.</p>
+        </div>
+        <div class="card">
+            <div class="icon">⚡</div>
+            <h3>Automations run silently</h3>
+            <p>Attendance tracking, EOD reports, standup summaries — set up once during onboarding, then delivered to the team lead's Slack every day without them lifting a finger.</p>
+        </div>
+        <div class="card">
+            <div class="icon">👥</div>
+            <h3>Available to the whole team</h3>
+            <p>Team members can message Hermes directly: "Who's on leave?" "What's the blocker?" "Help me draft this email." Answers are instant, even when the TL is offline.</p>
+        </div>
+    </div>
+</div>
 
-        <div class="moment">
-            <div class="label">A moment</div>
-            <h3>"I can take care of attendance for you."</h3>
+<!-- ===== SLIDE 4: WHAT IT LOOKS LIKE ===== -->
+<div class="slide">
+    <h2>What it <span class="accent">looks like</span></h2>
+    <p class="section-sub">Three moments from a team lead's day.</p>
+
+    <div class="moment-grid">
+        <div class="moment-item">
+            <div class="step">Morning</div>
+            <h4>"I can take care of attendance for you."</h4>
             <p>After the onboarding conversation, Hermes understands the team's schedule. It starts tracking logins, flagging latecomers, and delivering a daily summary to the team lead's Slack — without being asked.</p>
         </div>
-
-        <div class="moment">
-            <div class="label">A moment</div>
-            <h3>"Here's your EOD report, ready to send."</h3>
+        <div class="moment-item">
+            <div class="step">Evening</div>
+            <h4>"Here's your EOD report, ready to send."</h4>
             <p>At the end of the day, Hermes collects updates from the team, compiles them into a clean report, and drops it in the team lead's DMs. One tap to approve. Zero copy-paste.</p>
         </div>
-
-        <div class="moment">
-            <div class="label">A moment</div>
-            <h3>"Your team is asking about the deployment."</h3>
-            <p>Team members message Hermes directly: "What's the status on the deployment?" "Who's handling the client escalation?" "When's the next standup?" — answers are instant, even when the team lead is in a meeting.</p>
+        <div class="moment-item">
+            <div class="step">Any time</div>
+            <h4>"Your team is asking about the deployment."</h4>
+            <p>Team members message Hermes directly: "What's the status?" "Who's handling the escalation?" Answers are instant — even when the TL is in back-to-back meetings.</p>
         </div>
-
-        <div class="body-text">
-            <p>None of these require the team lead to configure anything. The agent proposes. The team lead says yes or no. That's the whole interaction.</p>
-        </div>
-
-        <div class="sep">· · ·</div>
-
-        <!-- ===== WHY NOW ===== -->
-        <div class="section-title">Why this matters</div>
-
-        <div class="body-text">
-            <p class="lede">The team leads we have are the people we trust the most. They're also the ones with the least amount of uninterrupted time.</p>
-
-            <p>Every hour they spend on operational overhead is an hour they're not spending on the work that grows the team, serves the client, or moves the project forward.</p>
-
-            <p>And when a team lead leaves — which happens, because burnout is real — all that knowledge walks out the door. <strong>The next person starts from zero.</strong></p>
-
-            <p>Hermes preserves what the team lead knows. The workflows. The SOPs. The team context. When someone new steps in, the agent is already there, ready to bring them up to speed.</p>
-        </div>
-
-        <div class="pull">
-            The team doesn't lose its memory when someone leaves. <em>It stays.</em>
-        </div>
-
-        <!-- ===== WHAT WE'RE ASKING ===== -->
-        <div class="section-title">What we're asking</div>
-
-        <div class="body-text">
-            <p class="lede">Just the time to try it with one person.</p>
-
-            <p>Pick one team lead. Set up a profile. Have them talk to Hermes for 30 minutes. See what happens.</p>
-
-            <p>If they find it useful, we do the next one. If not, we learn and adjust. There's nothing to buy, nothing to install, nothing to risk.</p>
-
-            <p>We're already running Hermes. Every team lead getting their own profile is just a matter of creating the space for them to have that first conversation.</p>
-        </div>
-
-        <!-- ===== CLOSING ===== -->
-        <div class="closing">
-            <p>This is a proposal to try something small and see if it works. Not a pitch for a big initiative. One team lead. One conversation. See what happens.</p>
-            <div class="name">Phani · IntelligenzIT · July 2026</div>
-        </div>
-
     </div>
+</div>
+
+<!-- ===== SLIDE 5: HOW IT WORKS ===== -->
+<div class="slide">
+    <h2>How it <span class="accent">works</span></h2>
+    <p class="section-sub">Simple enough that anyone can do it.</p>
+
+    <div class="steps">
+        <div class="step-box">
+            <div class="num">STEP 01</div>
+            <h4>Create a profile</h4>
+            <p>A new Hermes profile for the team lead. Isolated memory, skills, and config. Takes five minutes.</p>
+        </div>
+        <div class="step-box">
+            <div class="num">STEP 02</div>
+            <h4>30-minute conversation</h4>
+            <p>The team lead talks to their Hermes. Answers questions about their team and workflows. The agent learns and saves everything.</p>
+        </div>
+        <div class="step-box">
+            <div class="num">STEP 03</div>
+            <h4>Set up automations</h4>
+            <p>Hermes proposes: "I can track attendance and compile reports. Want me to?" The TL approves. It runs from day one.</p>
+        </div>
+        <div class="step-box">
+            <div class="num">STEP 04</div>
+            <h4>Connect to the team</h4>
+            <p>Hermes joins the team's Slack channel. Team members can message it. Reports arrive automatically. The TL reclaims their time.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== SLIDE 6: WHY IT MATTERS ===== -->
+<div class="slide">
+    <h2>Why it <span class="accent">matters</span></h2>
+
+    <div class="card-grid">
+        <div class="card">
+            <div class="icon">🎯</div>
+            <h3>Focus on what needs you</h3>
+            <p>Every hour a team lead spends chasing status updates is an hour they're not spending on architecture, strategy, client relationships, or mentoring their team.</p>
+        </div>
+        <div class="card">
+            <div class="icon">🧠</div>
+            <h3>Knowledge stays with the company</h3>
+            <p>When a team lead leaves, everything they know walks out the door. Hermes preserves the workflows, SOPs, and team context. The next person picks up where the last one left off.</p>
+        </div>
+        <div class="card">
+            <div class="icon">📈</div>
+            <h3>Scales with the team</h3>
+            <p>Start with one team lead. Add more as you go. Each one gets their own agent, isolated and independent. The approach grows with the company.</p>
+        </div>
+        <div class="card">
+            <div class="icon">🔒</div>
+            <h3>Self-hosted and secure</h3>
+            <p>Everything runs on IntelligenzIT infrastructure. Open source, auditable, no vendor lock-in. Data stays where it belongs.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== SLIDE 7: SECURITY ===== -->
+<div class="slide">
+    <h2>Security & <span class="accent">Control</span></h2>
+    <p class="section-sub">Built into the foundation, not bolted on later.</p>
+
+    <div class="security-grid">
+        <div class="security-item">
+            <h4>User allowlists</h4>
+            <p>Only approved team members can interact with their TL's agent.</p>
+        </div>
+        <div class="security-item">
+            <h4>Secret redaction</h4>
+            <p>API keys, tokens, passwords — auto-masked in all output.</p>
+        </div>
+        <div class="security-item">
+            <h4>Profile isolation</h4>
+            <p>Each team lead's data is fully separated from every other.</p>
+        </div>
+        <div class="security-item">
+            <h4>Prompt injection protection</h4>
+            <p>Malicious instructions in files or web pages are blocked.</p>
+        </div>
+        <div class="security-item">
+            <h4>Self-hosted</h4>
+            <p>All data stays on IntelligenzIT machines. No third-party servers.</p>
+        </div>
+        <div class="security-item">
+            <h4>Open source</h4>
+            <p>MIT-licensed. Fully auditable. No vendor lock-in, ever.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== SLIDE 8: THE PLAN ===== -->
+<div class="slide">
+    <h2>The <span class="accent">Plan</span></h2>
+    <p class="section-sub">Start small. See what works. Build from there.</p>
+
+    <div class="timeline">
+        <div class="tl-item">
+            <div class="phase">Week 1-2 · Pilot</div>
+            <h4>One team lead</h4>
+            <p>Pick one team lead. Create their profile. 30-minute onboarding conversation. Set up attendance tracking and EOD reports. See how it feels. Adjust based on feedback.</p>
+        </div>
+        <div class="tl-item">
+            <div class="phase">Week 3-4 · Five</div>
+            <h4>Five team leads</h4>
+            <p>Create four more profiles. 30-minute onboarding each. Build a shared library of proven automations. Connect all five to their team Slack channels.</p>
+        </div>
+        <div class="tl-item">
+            <div class="phase">Month 2+ · All teams</div>
+            <h4>Every team lead</h4>
+            <p>Onboard the rest. Use what we learned from the first five. Build Chandra-like digital workers from accumulated knowledge of each role.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ===== SLIDE 9: CLOSE ===== -->
+<div class="slide cta-section">
+    <div class="badge" style="background:rgba(99,102,241,0.12);color:#818cf8;border-color:rgba(99,102,241,0.2);display:inline-block;padding:6px 16px;border-radius:100px;font-size:13px;font-weight:600;margin-bottom:24px;">✦ WHAT WE'RE ASKING</div>
+    <h2>Try it with <span class="accent">one person</span></h2>
+    <p>
+        Pick one team lead. Create a profile. Have them talk to Hermes for 30 minutes. See what happens.<br><br>
+        If they find it useful, we do the next one. If not, we learn and adjust.<br><br>
+        <strong style="color:#f0f0ff;">There's nothing to approve except the decision to try.</strong>
+    </p>
+
+    <div class="small">
+        Prepared by Phani · IntelligenzIT · July 2026 · Built with Hermes
+    </div>
+</div>
+
 </body>
 </html>

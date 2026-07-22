@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hermes for Team Leads — IntelligenzIT</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
@@ -12,663 +12,247 @@
             font-family: 'Inter', -apple-system, sans-serif;
             background: #fafaf9;
             color: #1c1917;
-            line-height: 1.6;
         }
 
-        /* ===== COVER ===== */
-        .cover {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 60px 40px;
-            background: linear-gradient(165deg, #0c0a09 0%, #1c1917 40%, #292524 100%);
-            color: #fafaf9;
-            position: relative;
-            overflow: hidden;
+        .wrap {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 80px 32px;
         }
-        .cover::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -30%;
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%);
-            border-radius: 50%;
+
+        /* ===== HEADER ===== */
+        .header {
+            margin-bottom: 80px;
         }
-        .cover::after {
-            content: '';
-            position: absolute;
-            bottom: -30%;
-            left: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(168,85,247,0.06) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .cover * { position: relative; z-index: 1; }
-        .cover .tag {
-            font-size: 13px;
+        .header .tag {
+            font-size: 12px;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 3px;
-            color: #818cf8;
-            margin-bottom: 32px;
-        }
-        .cover h1 {
-            font-size: clamp(48px, 8vw, 96px);
-            font-weight: 900;
-            letter-spacing: -3px;
-            line-height: 1;
-            margin-bottom: 24px;
-        }
-        .cover h1 .accent {
-            background: linear-gradient(135deg, #818cf8, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .cover .sub {
-            font-size: clamp(18px, 2.5vw, 24px);
-            color: #a8a29e;
-            font-weight: 300;
-            max-width: 600px;
-            line-height: 1.6;
-            margin-bottom: 48px;
-        }
-        .cover .meta {
-            font-size: 14px;
-            color: #57534e;
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-        .cover .meta span { display: flex; align-items: center; gap: 6px; }
-
-        .scroll-hint {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #57534e;
-            font-size: 13px;
             letter-spacing: 2px;
-            text-transform: uppercase;
-            animation: bounce 2s infinite;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(8px); }
-        }
-
-        /* ===== SECTIONS ===== */
-        section {
-            padding: 120px 60px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        @media (max-width: 768px) {
-            section { padding: 80px 28px; }
-        }
-
-        section h2 {
-            font-size: clamp(28px, 4vw, 48px);
-            font-weight: 800;
-            letter-spacing: -1.5px;
-            line-height: 1.15;
+            color: #a8a29e;
             margin-bottom: 20px;
+        }
+        .header h1 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 56px;
+            font-weight: 400;
+            line-height: 1.1;
+            letter-spacing: -1px;
             color: #1c1917;
+            margin-bottom: 20px;
         }
-        section h2 .accent {
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .header h1 em {
+            font-style: italic;
+            color: #6366f1;
         }
-        section .lede {
+        .header p {
             font-size: 18px;
             color: #78716c;
-            max-width: 560px;
-            margin-bottom: 56px;
+            line-height: 1.7;
+            max-width: 520px;
+        }
+
+        /* ===== BODY TEXT ===== */
+        .body-text {
+            font-size: 16px;
+            color: #44403c;
+            line-height: 1.8;
+        }
+        .body-text p {
+            margin-bottom: 24px;
+        }
+        .body-text p.lede {
+            font-size: 19px;
+            color: #292524;
             line-height: 1.7;
         }
 
         /* ===== PULL QUOTE ===== */
         .pull {
-            font-size: clamp(24px, 3vw, 36px);
-            font-weight: 600;
-            line-height: 1.4;
-            letter-spacing: -0.5px;
+            font-family: 'Instrument Serif', serif;
+            font-size: 28px;
+            line-height: 1.3;
+            color: #1c1917;
             padding: 40px 0;
             margin: 40px 0;
-            border-top: 2px solid #e7e5e4;
-            border-bottom: 2px solid #e7e5e4;
-            color: #292524;
+            border-top: 1px solid #e7e5e4;
+            border-bottom: 1px solid #e7e5e4;
         }
-        .pull .attribution {
-            font-size: 14px;
-            font-weight: 400;
-            color: #a8a29e;
-            margin-top: 8px;
+        .pull em {
+            color: #6366f1;
+            font-style: italic;
         }
 
-        /* ===== GRID ===== */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-        }
-        .grid-3 {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 28px;
-        }
-        @media (max-width: 768px) {
-            .grid-2, .grid-3 { grid-template-columns: 1fr; }
-        }
-
-        .point {
-            padding: 0;
-        }
-        .point .num {
-            font-size: 12px;
+        /* ===== SECTION ===== */
+        .section-title {
+            font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #6366f1;
-            margin-bottom: 8px;
-        }
-        .point h3 {
-            font-size: 20px;
-            font-weight: 700;
-            color: #1c1917;
-            margin-bottom: 10px;
-            letter-spacing: -0.3px;
-        }
-        .point p {
-            font-size: 15px;
-            color: #78716c;
-            line-height: 1.7;
-        }
-
-        /* ===== STEPS ===== */
-        .step-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            border: 1px solid #e7e5e4;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-        .step-list .step {
-            padding: 36px 32px;
-            border-bottom: 1px solid #e7e5e4;
-            border-right: 1px solid #e7e5e4;
-        }
-        .step-list .step:nth-child(even) { border-right: none; }
-        .step-list .step:nth-last-child(-n+2) { border-bottom: none; }
-        @media (max-width: 768px) {
-            .step-list { grid-template-columns: 1fr; }
-            .step-list .step { border-right: none; }
-            .step-list .step:nth-last-child(-n+2) { border-bottom: 1px solid #e7e5e4; }
-            .step-list .step:last-child { border-bottom: none; }
-        }
-        .step .step-num {
-            font-size: 32px;
-            font-weight: 800;
-            color: #e7e5e4;
-            margin-bottom: 4px;
-            line-height: 1;
-        }
-        .step h4 {
-            font-size: 17px;
-            font-weight: 700;
-            color: #1c1917;
-            margin-bottom: 8px;
-        }
-        .step p {
-            font-size: 14px;
-            color: #78716c;
-            line-height: 1.6;
-        }
-
-        /* ===== COST CARD ===== */
-        .cost-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-        @media (max-width: 768px) { .cost-row { grid-template-columns: 1fr; } }
-        .cost-card {
-            border: 1px solid #e7e5e4;
-            border-radius: 20px;
-            padding: 48px 40px;
-            text-align: center;
-        }
-        .cost-card .label {
-            font-size: 14px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
             color: #a8a29e;
-            margin-bottom: 12px;
+            margin-bottom: 16px;
+            padding-top: 48px;
         }
-        .cost-card .amount {
-            font-size: 56px;
-            font-weight: 900;
-            letter-spacing: -2px;
-            line-height: 1;
-            margin-bottom: 8px;
-        }
-        .cost-card .note {
-            font-size: 15px;
-            color: #78716c;
-        }
-        .cost-card .detail {
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid #e7e5e4;
-            font-size: 13px;
-            color: #a8a29e;
-        }
-        .cost-card.highlighted {
-            background: #1c1917;
-            border-color: #1c1917;
-            color: #fafaf9;
-        }
-        .cost-card.highlighted .note { color: #a8a29e; }
-        .cost-card.highlighted .detail { border-color: #292524; color: #78716c; }
 
-        /* ===== SECURITY ===== */
-        .security-list {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-        @media (max-width: 768px) { .security-list { grid-template-columns: 1fr; } }
-        .sec-item {
-            padding: 20px 24px;
+        /* ===== MOMENT ===== */
+        .moment {
+            margin: 48px 0;
+            padding: 32px;
             background: #f5f5f4;
-            border-radius: 14px;
+            border-radius: 16px;
         }
-        .sec-item h4 {
-            font-size: 15px;
-            font-weight: 600;
-            color: #1c1917;
-            margin-bottom: 4px;
-        }
-        .sec-item p {
-            font-size: 14px;
-            color: #78716c;
-        }
-
-        /* ===== ROADMAP ===== */
-        .roadmap {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 0;
-            border: 1px solid #e7e5e4;
-            border-radius: 20px;
-            overflow: hidden;
-        }
-        .rm-item {
-            padding: 36px 32px;
-        }
-        .rm-item + .rm-item { border-left: 1px solid #e7e5e4; }
-        @media (max-width: 768px) {
-            .roadmap { grid-template-columns: 1fr; }
-            .rm-item + .rm-item { border-left: none; border-top: 1px solid #e7e5e4; }
-        }
-        .rm-item .phase {
-            font-size: 12px;
+        .moment .label {
+            font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1.5px;
-            color: #6366f1;
-            margin-bottom: 12px;
+            color: #a8a29e;
+            margin-bottom: 8px;
         }
-        .rm-item h4 {
-            font-size: 20px;
-            font-weight: 700;
+        .moment h3 {
+            font-family: 'Instrument Serif', serif;
+            font-size: 22px;
+            font-weight: 400;
             color: #1c1917;
             margin-bottom: 10px;
         }
-        .rm-item p {
-            font-size: 14px;
-            color: #78716c;
-            line-height: 1.6;
+        .moment p {
+            font-size: 15px;
+            color: #57534e;
+            line-height: 1.7;
         }
-        .rm-item .cost {
-            font-size: 14px;
-            font-weight: 600;
-            color: #059669;
-            margin-top: 16px;
+
+        /* ===== SEPARATOR ===== */
+        .sep {
+            text-align: center;
+            color: #d6d3d1;
+            font-size: 20px;
+            margin: 56px 0;
+            letter-spacing: 8px;
         }
 
         /* ===== CLOSING ===== */
         .closing {
-            text-align: center;
-            padding: 120px 60px;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        .closing h2 {
-            font-size: clamp(32px, 4vw, 52px);
-            font-weight: 800;
-            letter-spacing: -1.5px;
-            margin-bottom: 20px;
+            margin-top: 80px;
+            padding-top: 40px;
+            border-top: 1px solid #e7e5e4;
         }
         .closing p {
-            font-size: 18px;
-            color: #78716c;
+            font-size: 14px;
+            color: #a8a29e;
             line-height: 1.7;
-            margin-bottom: 40px;
         }
-        .closing .footer-meta {
-            font-size: 14px;
-            color: #a8a29e;
-            margin-top: 60px;
-        }
-        .closing .footer-meta span { color: #6366f1; }
-
-        /* ===== NUMBERS ROW ===== */
-        .numbers-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 0;
-            border: 1px solid #e7e5e4;
-            border-radius: 20px;
-            overflow: hidden;
-            margin: 24px 0;
-        }
-        .num-item {
-            padding: 32px 24px;
-            text-align: center;
-        }
-        .num-item + .num-item { border-left: 1px solid #e7e5e4; }
-        @media (max-width: 768px) {
-            .numbers-row { grid-template-columns: 1fr; }
-            .num-item + .num-item { border-left: none; border-top: 1px solid #e7e5e4; }
-        }
-        .num-item .big {
-            font-size: 36px;
-            font-weight: 800;
-            color: #6366f1;
-            line-height: 1;
-            margin-bottom: 4px;
-        }
-        .num-item .desc {
-            font-size: 14px;
-            color: #78716c;
-        }
-
-        .two-col {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-            margin: 28px 0;
-        }
-        @media (max-width: 768px) { .two-col { grid-template-columns: 1fr; } }
-        .two-col .box {
-            padding: 24px 28px;
-            border: 1px solid #e7e5e4;
-            border-radius: 16px;
-        }
-        .two-col .box .lbl {
-            font-size: 13px;
+        .closing .name {
+            font-size: 15px;
             font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #a8a29e;
-            margin-bottom: 4px;
-        }
-        .two-col .box .val {
-            font-size: 28px;
-            font-weight: 700;
             color: #1c1917;
+            margin-top: 24px;
         }
-        .two-col .box .val.green { color: #059669; }
-        .two-col .box .val.purple { color: #6366f1; }
-        .two-col .box p {
-            font-size: 14px;
-            color: #78716c;
-            margin-top: 4px;
+
+        @media (max-width: 600px) {
+            .wrap { padding: 48px 24px; }
+            .header h1 { font-size: 38px; }
+            .pull { font-size: 22px; }
+            .moment { padding: 24px; }
         }
     </style>
 </head>
 <body>
+    <div class="wrap">
 
-<!-- ===== COVER ===== -->
-<div class="cover">
-    <div class="tag">✦ Proposal for PVR</div>
-    <h1>Hermes for<br>Every Team <span class="accent">Lead</span></h1>
-    <p class="sub">Give each team lead at IntelligenzIT their own AI agent. It learns their team through conversation, automates the busywork, and helps everyone move faster.</p>
-    <div class="meta">
-        <span>📅 July 2026</span>
-        <span>✍️ Phani → PVR</span>
-        <span>🏢 IntelligenzIT</span>
+        <div class="header">
+            <div class="tag">A proposal for PVR</div>
+            <h1>Give every team lead <em>an assistant</em> that actually knows them.</h1>
+            <p>Not a chat bot. Not a spreadsheet. An agent that listens, learns, and takes care of the things that shouldn't need a team lead's attention.</p>
+        </div>
+
+        <div class="body-text">
+            <p class="lede">Every team lead we have is someone who earned their way up because they're good at their craft. They know the architecture. They know the client. They know their team.</p>
+
+            <p>But most of their day isn't spent on any of that. It's spent on <strong>chasing attendance, compiling reports, summarizing standups, answering the same status questions over and over.</strong></p>
+
+            <p>Not because they want to. Because someone has to do it. And that someone is them.</p>
+        </div>
+
+        <div class="pull">
+            What if the team lead could focus on the work that actually needs them — and everything else just <em>happened?</em>
+        </div>
+
+        <div class="body-text">
+            <p>That's what this is about. Not a tool they have to learn. <strong>An agent that learns them.</strong></p>
+        </div>
+
+        <!-- ===== HOW IT WORKS ===== -->
+        <div class="section-title">How it works</div>
+
+        <div class="body-text">
+            <p>When a new team lead gets Hermes, it doesn't come with a manual. It comes with a conversation.</p>
+
+            <p>It asks: <em>"What does your team do? Who's on it? What does a typical day look like? What tasks do you find yourself repeating every week?"</em></p>
+
+            <p>The team lead answers. That's it. The agent remembers everything and starts looking for ways to help.</p>
+        </div>
+
+        <div class="moment">
+            <div class="label">A moment</div>
+            <h3>"I can take care of attendance for you."</h3>
+            <p>After the onboarding conversation, Hermes understands the team's schedule. It starts tracking logins, flagging latecomers, and delivering a daily summary to the team lead's Slack — without being asked.</p>
+        </div>
+
+        <div class="moment">
+            <div class="label">A moment</div>
+            <h3>"Here's your EOD report, ready to send."</h3>
+            <p>At the end of the day, Hermes collects updates from the team, compiles them into a clean report, and drops it in the team lead's DMs. One tap to approve. Zero copy-paste.</p>
+        </div>
+
+        <div class="moment">
+            <div class="label">A moment</div>
+            <h3>"Your team is asking about the deployment."</h3>
+            <p>Team members message Hermes directly: "What's the status on the deployment?" "Who's handling the client escalation?" "When's the next standup?" — answers are instant, even when the team lead is in a meeting.</p>
+        </div>
+
+        <div class="body-text">
+            <p>None of these require the team lead to configure anything. The agent proposes. The team lead says yes or no. That's the whole interaction.</p>
+        </div>
+
+        <div class="sep">· · ·</div>
+
+        <!-- ===== WHY NOW ===== -->
+        <div class="section-title">Why this matters</div>
+
+        <div class="body-text">
+            <p class="lede">The team leads we have are the people we trust the most. They're also the ones with the least amount of uninterrupted time.</p>
+
+            <p>Every hour they spend on operational overhead is an hour they're not spending on the work that grows the team, serves the client, or moves the project forward.</p>
+
+            <p>And when a team lead leaves — which happens, because burnout is real — all that knowledge walks out the door. <strong>The next person starts from zero.</strong></p>
+
+            <p>Hermes preserves what the team lead knows. The workflows. The SOPs. The team context. When someone new steps in, the agent is already there, ready to bring them up to speed.</p>
+        </div>
+
+        <div class="pull">
+            The team doesn't lose its memory when someone leaves. <em>It stays.</em>
+        </div>
+
+        <!-- ===== WHAT WE'RE ASKING ===== -->
+        <div class="section-title">What we're asking</div>
+
+        <div class="body-text">
+            <p class="lede">Just the time to try it with one person.</p>
+
+            <p>Pick one team lead. Set up a profile. Have them talk to Hermes for 30 minutes. See what happens.</p>
+
+            <p>If they find it useful, we do the next one. If not, we learn and adjust. There's nothing to buy, nothing to install, nothing to risk.</p>
+
+            <p>We're already running Hermes. Every team lead getting their own profile is just a matter of creating the space for them to have that first conversation.</p>
+        </div>
+
+        <!-- ===== CLOSING ===== -->
+        <div class="closing">
+            <p>This is a proposal to try something small and see if it works. Not a pitch for a big initiative. One team lead. One conversation. See what happens.</p>
+            <div class="name">Phani · IntelligenzIT · July 2026</div>
+        </div>
+
     </div>
-    <div class="scroll-hint">Scroll ↓</div>
-</div>
-
-<!-- ===== PROBLEM ===== -->
-<section>
-    <h2>The problem is <span class="accent">time</span></h2>
-    <p class="lede">Team leads are our most expensive resource — and they're spending nearly half their week on things that don't need their expertise.</p>
-
-    <div class="grid-2">
-        <div class="point">
-            <div class="num">~3 hrs/week</div>
-            <h3>Attendance</h3>
-            <p>Logging in, logging out, chasing latecomers, preparing reports. Every team lead does this. None of them should.</p>
-        </div>
-        <div class="point">
-            <div class="num">~4 hrs/week</div>
-            <h3>End-of-Day Reports</h3>
-            <p>Each team member writes one. The TL compiles, formats, and forwards. Copy-paste work that takes hours.</p>
-        </div>
-        <div class="point">
-            <div class="num">~3 hrs/week</div>
-            <h3>Standups & Status</h3>
-            <p>Reading updates, summarizing for management, chasing missing entries. It adds up.</p>
-        </div>
-        <div class="point">
-            <div class="num">~5 hrs/week</div>
-            <h3>Ad-Hoc Queries</h3>
-            <p>"What's the status on X?" "Who's working on Y?" "Is the blocker resolved?" — constant context-switching.</p>
-        </div>
-    </div>
-
-    <div class="pull">
-        That's roughly 15 hours per week per team lead spent on tasks that don't require their judgment.
-        <div class="attribution">For 5 team leads: 75 hours a week — the equivalent of two full-time people.</div>
-    </div>
-</section>
-
-<!-- ===== VISION ===== -->
-<section>
-    <h2>What if each team lead had <span class="accent">an assistant</span> that never sleeps?</h2>
-    <p class="lede">Not a tool they have to learn. An agent that learns them.</p>
-
-    <div class="grid-2">
-        <div class="point">
-            <div class="num">Through conversation</div>
-            <h3>Onboarding takes 30 minutes</h3>
-            <p>Hermes asks: "What does your team do? Who are the members? What does a typical day look like? What tasks do you repeat every week?" The team lead answers in plain English. That's it. No training data, no config, no coding.</p>
-        </div>
-        <div class="point">
-            <div class="num">Across every session</div>
-            <h3>It remembers everything</h3>
-            <p>Names, roles, workflows, SOPs, decisions — all saved permanently. It builds skills from experience and gets better over time. When a team lead leaves, their Hermes profile transfers to the next person. Nothing is lost.</p>
-        </div>
-        <div class="point">
-            <div class="num">On autopilot</div>
-            <h3>Automations run forever</h3>
-            <p>Attendance tracking, EOD reports, standup summaries, daily digests — set up once during onboarding, then delivered to the TL's Slack every day without them lifting a finger.</p>
-        </div>
-        <div class="point">
-            <div class="num">For the whole team</div>
-            <h3>24/7 team assistant</h3>
-            <p>Team members can ask Hermes anything: "Who's on leave?", "What's the blocker on Project X?", "Help me draft this email." Answers are instant, even when the TL is offline.</p>
-        </div>
-    </div>
-</section>
-
-<!-- ===== WHAT IT LOOKS LIKE ===== -->
-<section>
-    <h2>Here's exactly what <span class="accent">happens</span></h2>
-    <p class="lede">Four steps, no surprises.</p>
-
-    <div class="step-list">
-        <div class="step">
-            <div class="step-num">01</div>
-            <h4>Create a profile</h4>
-            <p>We create a new Hermes profile for the team lead. A profile is a directory with isolated memory, skills, and config. Takes 5 minutes.</p>
-        </div>
-        <div class="step">
-            <div class="step-num">02</div>
-            <h4>30-minute onboarding</h4>
-            <p>The team lead chats with their Hermes. Answers questions about their team, workflows, and pain points. The agent learns and saves everything.</p>
-        </div>
-        <div class="step">
-            <div class="step-num">03</div>
-            <h4>Set up automations</h4>
-            <p>Hermes proposes: "I can track attendance and compile EOD reports. Want me to?" The TL approves. Cron jobs run from day one.</p>
-        </div>
-        <div class="step">
-            <div class="step-num">04</div>
-            <h4>Connect to Slack</h4>
-            <p>Hermes joins the team's Slack channel. Team members message it directly. Reports arrive without the TL lifting a finger.</p>
-        </div>
-    </div>
-</section>
-
-<!-- ===== INVESTMENT ===== -->
-<section>
-    <h2>The <span class="accent">numbers</span></h2>
-    <p class="lede">We're already spending ₹13,200/month on OpenRouter. Adding 5 team leads barely moves the needle.</p>
-
-    <div class="cost-row">
-        <div class="cost-card">
-            <div class="label">Already spending</div>
-            <div class="amount" style="color:#1c1917;">₹13,200</div>
-            <div class="note">per month on OpenRouter (entire org)</div>
-            <div class="detail">3.29B tokens · 38K requests · $0.05/M blended</div>
-        </div>
-        <div class="cost-card highlighted">
-            <div class="label">Add 5 team leads</div>
-            <div class="amount" style="color:#6366f1;">~₹200</div>
-            <div class="note">per month extra in tokens</div>
-            <div class="detail">Each TL: ~100-300 lightweight ops queries/day</div>
-        </div>
-    </div>
-
-    <div class="two-col">
-        <div class="box">
-            <div class="lbl">Infrastructure</div>
-            <div class="val green">₹0</div>
-            <p>Runs on your laptop. No VPS, no domain, no SSL.</p>
-        </div>
-        <div class="box">
-            <div class="lbl">Setup time per TL</div>
-            <div class="val purple">30 min</div>
-            <p>Conversation-based onboarding. No training.</p>
-        </div>
-    </div>
-
-    <div class="numbers-row">
-        <div class="num-item">
-            <div class="big">₹13,200</div>
-            <div class="desc">Current monthly OpenRouter spend</div>
-        </div>
-        <div class="num-item">
-            <div class="big">+~₹200</div>
-            <div class="desc">Cost to add 5 team leads</div>
-        </div>
-        <div class="num-item">
-            <div class="big">0</div>
-            <div class="desc">New infrastructure needed</div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== SECURITY ===== -->
-<section>
-    <h2>Security is <span class="accent">built in</span></h2>
-    <p class="lede">Self-hosted, open source, auditable. Your data stays on your machine.</p>
-
-    <div class="security-list">
-        <div class="sec-item">
-            <h4>User Allowlists</h4>
-            <p>Only approved team members can interact with their TL's Hermes.</p>
-        </div>
-        <div class="sec-item">
-            <h4>Secret Redaction</h4>
-            <p>API keys, passwords, tokens are auto-masked in all output.</p>
-        </div>
-        <div class="sec-item">
-            <h4>Profile Isolation</h4>
-            <p>Each team lead's data is fully separated from every other.</p>
-        </div>
-        <div class="sec-item">
-            <h4>Prompt Injection Protection</h4>
-            <p>Malicious instructions in files or web pages are blocked.</p>
-        </div>
-        <div class="sec-item">
-            <h4>Self-Hosted</h4>
-            <p>All data stays on your machine. OpenRouter sees only anonymized prompts. No training on your data.</p>
-        </div>
-        <div class="sec-item">
-            <h4>Open Source</h4>
-            <p>MIT-licensed. Fully auditable. No vendor lock-in. Every line of code is inspectable.</p>
-        </div>
-    </div>
-</section>
-
-<!-- ===== ROADMAP ===== -->
-<section>
-    <h2>The <span class="accent">plan</span></h2>
-    <p class="lede">Start with one. Scale to five. Then everywhere.</p>
-
-    <div class="roadmap">
-        <div class="rm-item">
-            <div class="phase">Week 1-2 · Pilot</div>
-            <h4>One team lead</h4>
-            <p>Create the first profile. Onboard one TL. Set up attendance + EOD reports. See how it feels. Adjust.</p>
-            <div class="cost">~₹40/month</div>
-        </div>
-        <div class="rm-item">
-            <div class="phase">Week 3-4 · Five</div>
-            <h4>Five team leads</h4>
-            <p>Create 4 more profiles. 30-min onboarding each. Build a shared skill library. Connect all to their team Slack channels.</p>
-            <div class="cost">~₹200/month</div>
-        </div>
-        <div class="rm-item">
-            <div class="phase">Month 2+ · Everywhere</div>
-            <h4>All teams</h4>
-            <p>Every team lead onboarded. Add a cheap VPS (₹500/mo) if needed for 24/7 gateway. Build Chandra-like digital workers from accumulated knowledge.</p>
-            <div class="cost">~₹500-1,000/month</div>
-        </div>
-    </div>
-</section>
-
-<!-- ===== CLOSING ===== -->
-<div class="closing">
-    <h2>Let's try it with <span class="accent">one team lead</span></h2>
-    <p>Pick one. Create the profile. 30 minutes of conversation. See what happens. If they like it, we do the next four. If not, we iterate. The cost is ₹40 in tokens.</p>
-
-    <p style="font-size: 15px; color: #292524; font-weight: 600; border-top: 2px solid #e7e5e4; padding-top: 32px; max-width: 400px; margin: 0 auto;">
-        There's nothing to approve except the decision to try.
-    </p>
-
-    <div class="footer-meta">
-        Phani · IntelligenzIT · July 2026 · <span>Built with Hermes</span>
-    </div>
-</div>
-
 </body>
 </html>
